@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "primeicons/primeicons.css";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lobster Two', cursive;
+}
+
+body {
+    background: rgb(69, 25, 82);
+    background: linear-gradient(90deg, rgba(69, 25, 82, 1) 0%, rgba(102, 37, 73, 1) 57%, rgba(174, 68, 90, 1) 100%);
+}
+
+.p-carousel-next,
+.p-carousel-prev {
+    box-shadow: none !important;
+    border: 1px solid !important;
+    border-radius: 50% !important;
+    color: #F39F5A !important;
+}
+
+
+.p-carousel-next:hover,
+.p-carousel-prev:hover {
+    background-color: #F39F5A;
+    border: #ae445a;
+    .p-icon-wrapper{
+        color: #fff;
+    }
+}

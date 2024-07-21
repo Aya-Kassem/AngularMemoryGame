@@ -1,0 +1,45 @@
+<div class="container h-100">
+    <div class="row h-100 d-flex align-items-center justify-content-center">
+        <div *ngIf="gameStarted" class="text-center">
+            <h1 class="mainTitle">Welcome to Memory Game</h1>
+            <div class="d-flex border">
+                <label for="name">Enter Your Name</label>
+                <input type="text" id="name">
+            </div>
+
+            <div class="d-flex">
+                <label for="">Your Game Level</label>
+                <div class="card flex justify-content-center">
+                    <p-dropdown [options]="levels" [(ngModel)]="selectedLevel" [checkmark]="false" optionLabel="name"
+                        [showClear]="true" placeholder="Select a Level" />
+                </div>
+            </div>
+            <button class="customBtn" (click)="startGame()">Paly</button>
+        </div>
+
+        <p-carousel *ngIf="!gameStarted" [value]="gameInfo" [numVisible]="1" [numScroll]="1" [circular]="false"
+            [showIndicators]="false" [responsiveOptions]="responsiveOptions" (onPage)="onSlidesEnded($event.page!)">
+            <ng-template let-info pTemplate="item">
+                <div class="card m-auto" style="width: 70%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ info.title }}</h5>
+                        <div class="card-text">
+                            <ul>
+                                <li>Number of Minmum Cards: {{ info.description.cardsNum.min }} Card</li>
+                                <li>Number of Maxmum Cards: {{ info.description.cardsNum.max }} Card</li>
+                                <li>Level Time: {{ info.description.time }}</li>
+                                <li>Level Moves: {{ info.description.moves }} </li>
+                            </ul>
+
+                            <a *ngIf="pageNumber === 2" class="boardBtn" (click)="prepareBoard()">Prepare Your Game
+                                Board
+                                <i class="pi-arrow-right" style="font-size: 1rem"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>

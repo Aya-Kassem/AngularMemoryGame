@@ -1,0 +1,66 @@
+.mainTitle {
+    margin-bottom: 50px;
+    color: #F39F5A;
+}
+
+.customBtn {
+    position: relative;
+    display: inline-block;
+    border-radius: 2rem;
+    border: 2px solid #F39F5A;
+    padding: 5px 45px;
+    font-size: 20px;
+    background-color: inherit;
+    color: #fff;
+    overflow: hidden;
+    transition: color .2s, transform .2s;
+}
+
+.customBtn::after {
+    background-color: #F39F5A;
+    border-radius: 2rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%) rotate(10deg);
+    transform-origin: top left;
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.customBtn:hover::after {
+    transform: translateX(0) rotate(0);
+}
+
+.customBtn:hover {
+    border: 2px solid transparent;
+    transform: scale(1.05);
+    border: 2px solid #ae445a;
+}
+
+.card {
+    background-color: inherit;
+    border: 2px solid #F39F5A;
+
+    .card-title {
+        color: #F39F5A;
+        font-size: 30px;
+    }
+
+    .card-text {
+        color: #fff;
+        font-size: 20px;
+        .boardBtn{
+            cursor: pointer;
+            color: #F39F5A;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    }
+}
+
+
