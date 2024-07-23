@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import "primeicons/primeicons.css";
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Lobster Two', cursive;
+    font-family: "Space Grotesk", sans-serif;
 }
 
 body {
@@ -12,20 +14,50 @@ body {
     background: linear-gradient(90deg, rgba(69, 25, 82, 1) 0%, rgba(102, 37, 73, 1) 57%, rgba(174, 68, 90, 1) 100%);
 }
 
-.p-carousel-next,
-.p-carousel-prev {
-    box-shadow: none !important;
-    border: 1px solid !important;
-    border-radius: 50% !important;
-    color: #F39F5A !important;
+// DROPDOWN STYLE ...
+.p-dropdown {
+    background-color: inherit !important;
+    width: 100%;
+    border:  none !important;
 }
 
+.p-dropdown .p-dropdown-label.p-placeholder,
+.p-dropdown .p-dropdown-trigger,
+.p-inputtext {
+    color: #fff !important;
+    font-size: 20px;
+}
 
-.p-carousel-next:hover,
-.p-carousel-prev:hover {
-    background-color: #F39F5A;
-    border: #ae445a;
-    .p-icon-wrapper{
+.p-dropdown:not(.p-disabled).p-focus{
+    box-shadow: none !important;
+}
+
+.p-dropdown .p-dropdown-panel{
+    background-color: inherit !important;
+    border: 2px solid #F39F5A;
+    margin-top: 5px !important;
+    
+    ul{
+        padding-left: 0 !important;
+
+        li span{
+            padding: 0 5px;
+        }
+    }
+
+    .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus, 
+    .p-dropdown-items .p-dropdown-item.p-highlight.p-focus{
+        background-color: #F39F5A !important;
+    }
+
+    .p-dropdown-items .p-dropdown-item, .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus{
         color: #fff;
+        font-size: 20px;
+    }
+
+    .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover{
+        background: none !important;
+        color: #F39F5A !important;
     }
 }
+

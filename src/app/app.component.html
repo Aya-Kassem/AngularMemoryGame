@@ -1,3 +1,7 @@
 <div class="main">
-    <gameIntro></gameIntro>
+    <!-- @if(flag$|async){
+        <spinner></spinner>
+    }
+    <gameIntro [hidden]="flag$|async"></gameIntro> -->
+    <gameBoard></gameBoard>
 </div>

@@ -1,45 +1,42 @@
-<div class="container h-100">
-    <div class="row h-100 d-flex align-items-center justify-content-center">
-        <div *ngIf="gameStarted" class="text-center">
-            <h1 class="mainTitle">Welcome to Memory Game</h1>
-            <div class="d-flex border">
-                <label for="name">Enter Your Name</label>
-                <input type="text" id="name">
-            </div>
-
-            <div class="d-flex">
-                <label for="">Your Game Level</label>
-                <div class="card flex justify-content-center">
-                    <p-dropdown [options]="levels" [(ngModel)]="selectedLevel" [checkmark]="false" optionLabel="name"
-                        [showClear]="true" placeholder="Select a Level" />
-                </div>
-            </div>
-            <button class="customBtn" (click)="startGame()">Paly</button>
-        </div>
-
-        <p-carousel *ngIf="!gameStarted" [value]="gameInfo" [numVisible]="1" [numScroll]="1" [circular]="false"
-            [showIndicators]="false" [responsiveOptions]="responsiveOptions" (onPage)="onSlidesEnded($event.page!)">
-            <ng-template let-info pTemplate="item">
-                <div class="card m-auto" style="width: 70%;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ info.title }}</h5>
-                        <div class="card-text">
-                            <ul>
-                                <li>Number of Minmum Cards: {{ info.description.cardsNum.min }} Card</li>
-                                <li>Number of Maxmum Cards: {{ info.description.cardsNum.max }} Card</li>
-                                <li>Level Time: {{ info.description.time }}</li>
-                                <li>Level Moves: {{ info.description.moves }} </li>
-                            </ul>
-
-                            <a *ngIf="pageNumber === 2" class="boardBtn" (click)="prepareBoard()">Prepare Your Game
-                                Board
-                                <i class="pi-arrow-right" style="font-size: 1rem"></i>
-                            </a>
-
-                        </div>
+<div class="container py-5">
+    <div class="row d-flex justify-content-center mb-4">
+        <h1 class="mainTitle text-center mb-3">Welcome to Memory Game</h1>
+        <p style="font-size: 25px; margin-top: 50px;" class="text-white text-center text-lg-start">Please Read Game Instructions </p>
+        @for (card of gameInfo; track card.title) {
+        <div class="col-12 col-lg-4 my-2 my-lg-0 px-1">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>Number of Minmum Cards: {{ card.description.cardsNum.min }} Card</li>
+                            <li>Number of Maxmum Cards: {{ card.description.cardsNum.max }} Card</li>
+                            <li>Level Time: {{ card.description.time }}</li>
+                            <li>Level Moves: {{ card.description.moves }} </li>
+                        </ul>
                     </div>
                 </div>
-            </ng-template>
-        </p-carousel>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="row d-flex justify-content-center userInfo ">
+        <div class="col-12 col-lg-6 mb-4 name d-flex justify-content-between ">
+            <label for="name" class="mb-2 mb-sm-0">Enter Your Name: </label>
+            <input type="text" id="name" class="px-3" [(ngModel)]="username" >
+        </div>
+
+        <div class="level col-12 col-lg-6 d-flex justify-content-between ">
+            <label for="level" class="mb-2 mb-sm-0">Choose Game Level: </label>
+            <div class="dropDown flex px-3 ">
+                <p-dropdown 
+                    [options]="levels" 
+                    [(ngModel)]="selectedLevel" 
+                    [checkmark]="false" [showClear]="false"
+                    id="level" />
+            </div>
+        </div>
+        
+        <button class="customBtn" (click)="startGame()" [ngClass]=" {'disabledBtn': !username} "  >Paly</button>
     </div>
 </div>

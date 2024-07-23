@@ -1,6 +1,7 @@
 .mainTitle {
     margin-bottom: 50px;
     color: #F39F5A;
+    font-family: 'Lobster Two', cursive;
 }
 
 .customBtn {
@@ -8,15 +9,17 @@
     display: inline-block;
     border-radius: 2rem;
     border: 2px solid #F39F5A;
-    padding: 5px 45px;
+    width: 300px;
+    height: 45px;
     font-size: 20px;
     background-color: inherit;
     color: #fff;
     overflow: hidden;
     transition: color .2s, transform .2s;
+    margin-top: 140px;
 }
 
-.customBtn::after {
+.customBtn:not(.disabledBtn)::after {
     background-color: #F39F5A;
     border-radius: 2rem;
     content: '';
@@ -49,12 +52,14 @@
     .card-title {
         color: #F39F5A;
         font-size: 30px;
+        font-family: 'Lobster Two', cursive;
     }
 
     .card-text {
         color: #fff;
         font-size: 20px;
-        .boardBtn{
+
+        .boardBtn {
             cursor: pointer;
             color: #F39F5A;
             font-size: 20px;
@@ -63,4 +68,47 @@
     }
 }
 
+.dropDown {
+    border-radius: 2rem;
+    background-color: inherit;
+    border: 2px solid #F39F5A;
+    height: fit-content;
+}
 
+.name label,
+.level label,
+.name input {
+    font-size: 20px;
+    color: #fff;
+}
+
+.name input {
+    background-color: inherit;
+    border: 2px solid #F39F5A;
+    border-radius: 2rem;
+}
+
+input:-internal-autofill-selected {
+    background-color: none !important;
+    color: #fff !important;
+}
+
+.name input:focus {
+    border: 2px solid #F39F5A;
+    box-shadow: none;
+    outline: none;
+}
+
+.name input,
+.level div {
+    width: 60%;
+
+}
+
+.userInfo {
+    margin-top: 80px;
+}
+
+.disabledBtn {
+    cursor: not-allowed;
+}
