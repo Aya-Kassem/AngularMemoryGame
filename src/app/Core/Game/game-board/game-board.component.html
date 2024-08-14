@@ -1,0 +1,62 @@
+@if( !showResultDialog ){
+<div class="container-fluid  h-100 py-3">
+    <h2 class="text-white text-center mb-3 heading">Welcome To Memory Game ...</h2>
+    <div class="containEr">
+        <div class="sidebar mx-xl-2 dashboard">
+            <div class="infoContainer ">
+                <p class="text-white px-3">
+                    <span>Player:</span>
+                    <span class="ps-4">{{ (playerInfo$ | async)?.name }}</span>
+                </p>
+                <p class="text-white px-3">
+                    <span>Level: </span>
+                    <span class="ps-4">{{ (playerInfo$ | async)?.level }}</span>
+                </p>
+
+            </div>
+            <div class="infoContainer ">
+                <p class="text-white px-3">
+                    <span>Moves:</span>
+                    <span class="ps-4">{{ (gameInfo$ | async)?.moves }}</span>
+                </p>
+                <p class="text-white px-3">
+                    <span>Misses: </span>
+                    <span class="ps-4">{{ (gameInfo$ | async)?.misses }}</span>
+                </p>
+            </div>
+            <div class="infoContainer ">
+                <p class="text-white px-3">
+                    <span>Moves Left: </span>
+                    <span class="ps-4">{{ (gameInfo$|async)?.movesLeft }}</span>
+                </p>
+                @if((playerInfo$ | async)?.level == 'Easy' ){
+                <p class="text-white px-3">Time Left: No Limit </p>
+                }
+                @if( (playerInfo$ | async)?.level != 'Easy' ){
+                <p class="text-white px-3">
+                    <span>Time Left: </span>
+                    <span class="ps-4">{{ minutes < 10 ? '0' +minutes : minutes }} : {{ seconds < 10 ? '0' +seconds:
+                            seconds }}</span>
+                </p>
+                }
+            </div>
+            <div class="d-flex flex-xl-column align-items-center justify-content-center dashboardBtns">
+                <button class="m-2" (click)="restartRound()">Restart </button>
+                <button class="m-2" (click)="cancelRound()">Cancel </button>
+            </div>
+        </div>
+
+        <div class="board">
+            <boardCell></boardCell>
+        </div>
+    </div>
+</div>
+}
+
+@if( showResultDialog ){
+<resultDialog (play)="checkRedo($event)">
+    @if(level != 'Easy'){
+        <p class="mb-3">You`ve Ended In {{ level == 'Medium' ? 10 - minutes : 5 - minutes }} Minutes </p>
+    }
+</resultDialog>
+}

@@ -1,0 +1,41 @@
+<div class="container py-5">
+    <div class="row d-flex justify-content-center mb-4">
+        <h1 class="mainTitle text-center mb-3">Welcome to Memory Game</h1>
+        <p style="font-size: 25px; margin-top: 50px;" class="text-white text-center text-lg-start">Please Read Game Instructions </p>
+        @for (card of gameInfo; track card.title) {
+        <div class="col-12 col-lg-4 my-2 my-lg-0 px-1">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>Number of Cards: {{ card.description.cardsNum }} Card</li>
+                            <li>Level Time: {{ card.description.time }}</li>
+                            <li>Level Moves: {{ card.description.moves }} </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="row d-flex justify-content-center userInfo ">
+        <div class="col-12 col-lg-6 mb-4 name d-flex flex-column flex-sm-row justify-content-between ">
+            <label for="name" class="mb-2 mb-sm-0">Enter Your Name: </label>
+            <input type="text" id="name" class="px-3" [(ngModel)]="username" >
+        </div>
+
+        <div class="level col-12 col-lg-6 d-flex flex-column flex-sm-row justify-content-between ">
+            <label for="level" class="mb-2 mb-sm-0">Choose Game Level: </label>
+            <div class="dropDown flex px-3 ">
+                <p-dropdown 
+                    [options]="levels" 
+                    [(ngModel)]="selectedLevel" 
+                    [checkmark]="false" [showClear]="false"
+                    id="level" />
+            </div>
+        </div>
+        
+        <button class="customBtn" (click)="startGame()" [ngClass]=" {'disabledBtn': !username} "  >Paly</button>
+    </div>
+</div>

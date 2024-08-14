@@ -1,12 +1,8 @@
-// @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-@import "primeicons/primeicons.css";
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Space Grotesk", sans-serif;
 }
 
 body {
@@ -33,11 +29,11 @@ body {
 }
 
 .p-dropdown .p-dropdown-panel{
-    background-color: inherit !important;
-    border: 2px solid #F39F5A;
+    background-color: rgb(102, 37, 73) !important;
     margin-top: 5px !important;
     
     ul{
+        width: 100%;
         padding-left: 0 !important;
 
         li span{
@@ -59,5 +55,78 @@ body {
         background: none !important;
         color: #F39F5A !important;
     }
+
+    .p-dropdown-items .p-dropdown-item.p-highlight{
+        background: none;
+    }
 }
+
+.p-dialog{
+    border: 2px solid #F39F5A;
+    padding: 10px;
+}
+.p-dialog .p-dialog-content, 
+.p-dialog .p-dialog-header{
+    background-color: inherit !important;
+    color: #fff;
+}
+.p-dialog .p-dialog-content{
+    font-size: 20px;
+}
+.header{
+    color: #F39F5A;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon{
+    color: #fff;
+    font-size: 25px;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover{
+    background: none;
+}
+
+.dialogBtn{
+    position: relative;
+    display: inline-block;
+    border-radius: 2rem;
+    border: 2px solid #F39F5A;
+ 
+    font-size: 20px;
+    background-color: inherit;
+    color: #fff;
+    overflow: hidden;
+    transition: color .2s, transform .2s;
+    box-shadow: none;
+    outline: none;
+}
+
+.dialogBtn:not(.retry){
+    width: 230px;
+    height: 50px;
+}
+
+.retry{
+    width: 150px;
+    height: 45px;
+}
+.dialogBtn:not(.disabledBtn)::after {
+    background-color: #F39F5A;
+    border-radius: 2rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%) rotate(10deg);
+    transform-origin: top left;
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.dialogBtn:hover::after {
+    transform: translateX(0) rotate(0);
+}
+
 

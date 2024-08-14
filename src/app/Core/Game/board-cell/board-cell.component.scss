@@ -1,0 +1,96 @@
+.game-board {
+    flex-grow: 1;
+    border-radius: 8px;
+    padding: 0 5px;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 5px;
+    max-height: 100%;
+}
+
+.easy{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.medium{
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.hard{
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.cell {
+    position: relative;
+    transition: transform 0.2s;
+    transform-style: preserve-3d;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.imgCover{
+    width: 100%;
+    height: 100%;
+    background-color: #522258;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.imgCover::after{
+    content: '?';
+    font-weight: 700;
+    font-size: 130px;
+    color: #fff;
+    transform: rotate(10deg);
+}
+
+.addPointer {
+    cursor: pointer;
+}
+
+.match {
+    cursor: not-allowed;
+}
+
+.imgCover {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+}
+
+.img:not(.imgCover) {
+    position: absolute;
+    transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
+}
+
+.flipped .img:not(.imgCover) {
+    transform: rotateY(0deg);
+}
+
+.flipped .imgCover {
+    transform: rotateY(90deg);
+    transition-delay: 0.1s;
+}
+
+@media (max-width: 768px) {
+    .containEr {
+        flex-direction: column;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}

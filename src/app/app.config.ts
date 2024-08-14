@@ -1,32 +1,25 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
-import { provideStore } from '@ngrx/store';
-import { spinnerVisiabliltyReducer } from './Shared/Store/Spinner/spinner.reducer';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { userInfoReducer } from './Shared/Store/User/user.reducers';
+import { routes } from './app.routes';
+import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { storeUserState } from './Shared/Store/User/user.actions';
-import { UserEffects } from './Shared/Store/User/user.effects';
-
+import { playerInfoReducer } from './Shared/Store/Player/player.reducer';
+import { PlayerEffects } from './Shared/Store/Player/player.effects';
+import { spinnerVisiabliltyReducer } from './Shared/Store/Spinner/spinner.reducer';
+import { gameReducer } from './Shared/Store/Game/game.reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideRouter(routes, withHashLocation()),
         provideAnimations(),
-        provideRouter(routes),
-        provideClientHydration(),
-        provideStore(
-            {
-                'ChangeSpinnerVisability': spinnerVisiabliltyReducer,
-                'UserInfo': userInfoReducer
-
-            }),
-            provideEffects(
-                UserEffects
-            )
-        
-        
-        ]
+        provideStore({
+            'PlayerInfo': playerInfoReducer,
+            'ChangeSpinnerVisability': spinnerVisiabliltyReducer,
+            'GameInfo': gameReducer
+        }),
+        provideEffects([
+            PlayerEffects
+        ])
+    ]
 };

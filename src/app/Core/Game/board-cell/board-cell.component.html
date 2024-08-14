@@ -1,0 +1,11 @@
+<div class="game-board" [ngClass]="{'easy': level === 'Easy', 'medium' : level === 'Medium', 'hard': level === 'Hard' }"  >
+    <audio src="./assets/btnClick.mp3" #audio ></audio>
+    <div *ngFor="let img of levelImages " >
+        <div #cell class="cell" 
+            (click)="checkIfImageMatching($event, cell, mainImage, audio)" 
+            [ngClass]="{'addPointer': numberOfFlippedCards < 2}" >
+            <img [src]="img.src" alt="image" class="img"  [attr.data]="img.data" #mainImage>
+            <div class="imgCover"></div>
+        </div>
+    </div>
+</div>

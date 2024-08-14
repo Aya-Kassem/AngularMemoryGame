@@ -1,7 +1,8 @@
-<div class="main">
-    <!-- @if(flag$|async){
+<div class="main m-0 p-0">
+    @if(!showSpinner){
+        <router-outlet></router-outlet>
+    }
+    @if( showSpinner ){
         <spinner></spinner>
     }
-    <gameIntro [hidden]="flag$|async"></gameIntro> -->
-    <gameBoard></gameBoard>
 </div>
